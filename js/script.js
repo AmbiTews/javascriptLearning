@@ -1,2 +1,2 @@
-  let js = "amazing";
-    if (js === "amazing") alert("Javascript is fun");
+let js = "amazing";
+if (js === "amazing") console.log("Javascript is fun");
