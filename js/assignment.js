@@ -16,7 +16,7 @@ const johnMass = 92;
 const markHeight = 1.69;
 const johnHeight = 1.95;
 
-const markHigherBMI;
+let markHigherBMI;
 const markBMI = markMass / (markHeight ** 2);
 const johnBMI = johnMass / (johnHeight ** 2);
 
