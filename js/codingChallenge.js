@@ -1,6 +1,6 @@
 //JavaScript Fundamentals – Part 1
 
-//Coding Challenge 1  
+//Coding Challenge 1
 /*
 
 Mark and John are trying to compare their BMI (Body Mass Index), which is
@@ -35,26 +35,35 @@ const markHeight = 1.69;
 const johnHeight = 1.95;
 
 let markHigherBMI;
-const markBMI = markMass / (markHeight ** 2);
-const johnBMI = johnMass / (johnHeight ** 2);
-markHigherBMI = johnBMI > markBMI
+const markBMI = markMass / markHeight ** 2;
+const johnBMI = johnMass / johnHeight ** 2;
+markHigherBMI = johnBMI > markBMI;
 
 if (markHigherBMI) {
-    const diffBMI = johnBMI - markBMI;
+  const diffBMI = johnBMI - markBMI;
 
-    console.log("John's BMI is higher than Mark's!");
-    console.log("John's BMI (" + johnBMI + ") is higher  than Mark's (" + markBMI + ") by " + diffBMI);
+  console.log("John's BMI is higher than Mark's!");
+  console.log(
+    "John's BMI (" +
+      johnBMI +
+      ") is higher  than Mark's (" +
+      markBMI +
+      ") by " +
+      diffBMI
+  );
+} else {
+  const diffBMI = markBMI - johnBMI;
+
+  console.log("Mark's BMI is higher than John's!");
+  console.log(
+    "Mark's BMI (" +
+      markBMI +
+      ") is higher  than John's (" +
+      johnBMI +
+      ") by " +
+      diffBMI
+  );
 }
-else {
-    const diffBMI = markBMI - johnBMI;
-
-    console.log("Mark's BMI is higher than John's!");
-    console.log("Mark's BMI (" + markBMI + ") is higher  than John's (" + johnBMI + ") by " + diffBMI);
-}
-
-
-
-
 
 // Coding Challenge #3
 
@@ -73,17 +82,19 @@ if (avgScoreTeamDolphin > avgScoreTeamKolas) {
 */
 const avgScoreTeamDolphin = (97 + 112 + 101) / 3;
 const avgScoreTeamKolas = (109 + 95 + 123) / 3;
-const ifDolphinMS = (avgScoreTeamDolphin >= 100);
-const ifKolhasMS = (avgScoreTeamKolas >= 100);
-if ((avgScoreTeamDolphin > avgScoreTeamKolas) && (ifDolphinMS)) {
-    console.log(`Dolphin has achieved the minimum score of 100 and is the Winner! Score is  ${avgScoreTeamDolphin}`);
-} else if ((avgScoreTeamKolas > avgScoreTeamDolphin) && (ifKolhasMS)) {
-    console.log(`Kolas has achieved the minimum score and is  the Winner! Score is ${avgScoreTeamKolas}`);
+const ifDolphinMS = avgScoreTeamDolphin >= 100;
+const ifKolhasMS = avgScoreTeamKolas >= 100;
+if (avgScoreTeamDolphin > avgScoreTeamKolas && ifDolphinMS) {
+  console.log(
+    `Dolphin has achieved the minimum score of 100 and is the Winner! Score is  ${avgScoreTeamDolphin}`
+  );
+} else if (avgScoreTeamKolas > avgScoreTeamDolphin && ifKolhasMS) {
+  console.log(
+    `Kolas has achieved the minimum score and is  the Winner! Score is ${avgScoreTeamKolas}`
+  );
 } else {
-    console.log("It's a TIE!");
+  console.log("It's a TIE!");
 }
-
-
 
 //Coding Challenge 4
 /*
@@ -103,11 +114,12 @@ Test data:
 */
 
 let tip;
-let bill = 275
-tip = (bill >= 50 && bill <= 300) ? Number(.15 * bill) : Number(.20 * bill);
+let bill = 275;
+tip = bill >= 50 && bill <= 300 ? Number(0.15 * bill) : Number(0.2 * bill);
 let totalBill = bill + tip;
-console.log(`Steven should give ${tip} on bill ${bill} which makes total bill as ${totalBill}`);
-
+console.log(
+  `Steven should give ${tip} on bill ${bill} which makes total bill as ${totalBill}`
+);
 
 //JavaScript Fundamentals – Part 2
 //Coding Challenge #1
@@ -133,21 +145,25 @@ Test data:
 § Data 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
 */
 
-'use strict';
+("use strict");
 
 const calcAverage = (s1, s2, s3) => {
-    let avg = (s1 + s2 + s3) / 3
-    return avg
-}
+  let avg = (s1 + s2 + s3) / 3;
+  return avg;
+};
 const avgDolhins = calcAverage(85, 54, 41);
 const avgKolas = calcAverage(23, 34, 27);
 
 const checkWinner = (avgDolhins, avgKolas) => {
+  const winner =
+    avgDolhins >= 2 * avgKolas
+      ? `Dolhins wins ${avgDolhins} vs. ${avgKolas}`
+      : avgKolas >= 2 * avgDolhins
+      ? `Kolas wins ${avgKolas} vs. ${avgDolhins}`
+      : `No one wins`;
 
-    const winner = avgDolhins >= 2 * avgKolas ? `Dolhins wins ${avgDolhins} vs. ${avgKolas}` : avgKolas >= 2 * avgDolhins ? `Kolas wins ${avgKolas} vs. ${avgDolhins}` : `No one wins`
-
-    return winner;
-}
+  return winner;
+};
 
 console.log(`Average Score of Dolphin Team is  ${avgDolhins}`);
 console.log(`Average Score of Kolas Team is  ${avgKolas}`);
@@ -173,9 +189,10 @@ Test data: 125, 555 and 44
 */
 
 const calcTip = (billValue) => {
-    const tipVal = (billValue >= 50 && billValue <= 300) ? (billValue * .15) : (billValue * .20);
-    return tipVal;
-}
+  const tipVal =
+    billValue >= 50 && billValue <= 300 ? billValue * 0.15 : billValue * 0.2;
+  return tipVal;
+};
 
 const bill = new Array(125, 555, 44);
 const tip = new Array();
@@ -184,19 +201,17 @@ const totalBill = new Array();
 let i, j, k;
 const billLength = bill.length;
 for (i = 0; i < billLength; i++) {
-    tip.push(calcTip(bill[i]));
+  tip.push(calcTip(bill[i]));
 }
 console.log(`Bill values are :  ${bill}`);
 console.log(`Tips values are :  ${tip}`);
 
 const tipLength = bill.length;
 
-
 for (j = 0, k = 0; j < billLength, k < tipLength; j++, k++) {
-    totalBill.push(bill[j] + tip[k])
+  totalBill.push(bill[j] + tip[k]);
 }
 console.log(`Total Bills are  : ${totalBill}`);
-
 
 //Coding Challenge #3
 /*
@@ -216,28 +231,30 @@ tall.
 */
 
 const markMiller = {
-    fullName: "Mark Miller",
-    mass: 78,
-    height: 1.69,
-    calcBMI: function () {
-        this.bmi = (this.mass) / (this.height * this.height);
-        return this.bmi;
-    }
-}
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
 
 const johnSmith = {
-    fullName: "John Smith",
-    mass: 92,
-    height: 1.95,
-    calcBMI: function () {
-        this.bmi = (this.mass) / (this.height * this.height);
-        return this.bmi;
-    }
-}
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
 
-const str = (markMiller.calcBMI() > johnSmith.calcBMI()) ? `${markMiller['fullName']}'s  BMI ${markMiller['bmi']} is higher than ${johnSmith['fullName']}'s ${johnSmith['bmi']} !` : `${johnSmith['fullName']}'s  BMI ${johnSmith['bmi']} is higher than ${markMiller['fullName']}'s ${markMiller['bmi']} !`; // through calcBMI we set the age property and post that we can retrieve it multiple times. Without running the object method that sets the age property we can't get the set property value;
+const str =
+  markMiller.calcBMI() > johnSmith.calcBMI()
+    ? `${markMiller["fullName"]}'s  BMI ${markMiller["bmi"]} is higher than ${johnSmith["fullName"]}'s ${johnSmith["bmi"]} !`
+    : `${johnSmith["fullName"]}'s  BMI ${johnSmith["bmi"]} is higher than ${markMiller["fullName"]}'s ${markMiller["bmi"]} !`; // through calcBMI we set the age property and post that we can retrieve it multiple times. Without running the object method that sets the age property we can't get the set property value;
 console.log(str);
-
 
 //Coding Challenge 4
 /*
@@ -253,22 +270,20 @@ Hints:
 */
 
 const bills = new Array(22, 295, 176, 440, 37, 105, 10, 1100, 86, 52);
-const tips = new Array;
-const totals = new Array;
+const tips = new Array();
+const totals = new Array();
 const billLength = bills.length;
 
 const calcTip = (bills) => {
-    for (let i = 0; i < billLength; i++) {
-        var tip = (bills[i] >= 50 && bills[i] <= 300) ? bills[i] * .15 : bills[i] * .20;
-        tips.push(tip);
-        totals.push(tip + bills[i]);
-    }
-    console.log(`Tips are ${tips}`);
-    console.log(`Total Bill are ${totals}`);
-    console.log(`Bills are ${bills}`)
-
-}
+  for (let i = 0; i < billLength; i++) {
+    var tip =
+      bills[i] >= 50 && bills[i] <= 300 ? bills[i] * 0.15 : bills[i] * 0.2;
+    tips.push(tip);
+    totals.push(tip + bills[i]);
+  }
+  console.log(`Tips are ${tips}`);
+  console.log(`Total Bill are ${totals}`);
+  console.log(`Bills are ${bills}`);
+};
 
 console.log(calcTip(bills));
-
-
